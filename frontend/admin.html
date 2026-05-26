@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | EchoSense</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar" style="background: #0a110e;">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    EchoSense <span style="font-size: 10px; background: var(--alert-red); color: white; padding: 2px 6px; border-radius: 4px; font-family: 'Inter';">ADMIN</span>
+                </a>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#" class="nav-item active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    System Health
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    Users
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    ML Pipelines
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="topbar">
+                <div>
+                    <h2 class="mb-1">System Administration</h2>
+                    <p class="text-muted">Global Infrastructure and Model Status</p>
+                </div>
+            </div>
+
+            <!-- Metrics -->
+            <div class="metrics-grid admin-grid">
+                <div class="glass-panel metric-card" style="border-left: 4px solid var(--primary-emerald);">
+                    <div class="metric-info" style="width: 100%;">
+                        <h4>API Latency (p95)</h4>
+                        <div class="value" style="display: flex; align-items: baseline; gap: 8px;">
+                            45ms <span style="font-size: 14px; font-weight: normal; color: var(--primary-emerald);">↓ 2ms</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-panel metric-card" style="border-left: 4px solid var(--primary-emerald);">
+                    <div class="metric-info" style="width: 100%;">
+                        <h4>Active Inference Jobs</h4>
+                        <div class="value">14</div>
+                    </div>
+                </div>
+                <div class="glass-panel metric-card" style="border-left: 4px solid var(--primary-emerald);">
+                    <div class="metric-info" style="width: 100%;">
+                        <h4>Model Version</h4>
+                        <div class="value" style="font-size: 1.5rem;">LSTM-v2.4.1</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monitored Regions Table -->
+            <div class="glass-panel">
+                <h3 class="mb-3">Global Region Alerts</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Region ID</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Silence Score</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>R-842</td>
+                            <td>Brazilian Amazon (Mato Grosso)</td>
+                            <td><span class="status-badge status-critical">Critical</span></td>
+                            <td class="text-center"><span style="color: var(--alert-red); font-weight: bold;">88%</span></td>
+                            <td><button class="btn btn-outline" style="padding: 4px 8px; font-size: 12px;">View Data</button></td>
+                        </tr>
+                        <tr>
+                            <td>R-105</td>
+                            <td>Congo Basin Sector 4</td>
+                            <td><span class="status-badge status-stress">Stress</span></td>
+                            <td class="text-center"><span style="color: var(--alert-yellow); font-weight: bold;">54%</span></td>
+                            <td><button class="btn btn-outline" style="padding: 4px 8px; font-size: 12px;">View Data</button></td>
+                        </tr>
+                        <tr>
+                            <td>R-901</td>
+                            <td>Boreal Forest (Canada)</td>
+                            <td><span class="status-badge status-normal">Healthy</span></td>
+                            <td class="text-center"><span style="color: var(--primary-emerald); font-weight: bold;">12%</span></td>
+                            <td><button class="btn btn-outline" style="padding: 4px 8px; font-size: 12px;">View Data</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | EchoSense</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header"><a href="index.html" class="logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> EchoSense</a></div>
+            <nav class="nav-links">
+                <a href="dashboard.html" class="nav-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Main Dashboard</a>
+                <a href="reports.html" class="nav-item active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg> Reports</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="topbar">
+                <h2 class="mb-1">Generate Academic Reports</h2>
+                <p class="text-muted">Export Silence Scores and automated recommendations</p>
+            </div>
+
+            <div class="glass-panel" style="max-width: 600px;">
+                <form onsubmit="event.preventDefault(); alert('Generating PDF with NDVI Graphs. Please wait...');">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted);">Select Region</label>
+                        <select style="width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+                            <option>All Monitored Regions</option>
+                            <option>Grid 42A - Amazon Basin</option>
+                            <option>Grid 105 - Congo</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted);">Report Content</label>
+                        <div style="display: flex; gap: 1rem;">
+                            <label><input type="checkbox" checked> NDVI Time-Series</label>
+                            <label><input type="checkbox" checked> Silence Scores</label>
+                            <label><input type="checkbox" checked> ML Recommendations</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Download PDF (.pdf)
+                    </button>
+                </form>
+            </div>
+            
+            <h3 class="mt-4 mb-3">Previous Archives</h3>
+            <div class="glass-panel text-muted" style="display: flex; justify-content: space-between; padding: 1rem 1.5rem;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+                    <span>Q2 Ecosystem Health Digest</span>
+                </div>
+                <span>Sep 2025</span>
+                <button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Re-Download</button>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

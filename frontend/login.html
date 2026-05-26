@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | EchoSense</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.1) 0%, var(--bg-dark) 50%);
+            padding: 2rem;
+        }
+        
+        .auth-card {
+            max-width: 450px;
+            width: 100%;
+            padding: 3rem 2.5rem;
+        }
+        
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .auth-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-emerald);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: #fff;
+            transition: var(--transition-smooth);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-emerald);
+            background: rgba(16, 185, 129, 0.05);
+        }
+        
+        .btn-block {
+            width: 100%;
+            display: block;
+        }
+        
+        .auth-footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        .auth-footer a {
+            color: var(--primary-emerald);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="glass-panel auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    EchoSense
+                </div>
+                <p class="text-muted">Enter your credentials to access the monitoring dashboard.</p>
+            </div>
+            
+            <form id="loginForm">
+                <div id="loginError" style="display: none; color: #ef4444; background: rgba(239, 68, 68, 0.1); padding: 0.75rem; border-radius: 8px; margin-bottom: 1rem; border: 1px solid #ef4444; font-size: 0.875rem;"></div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="researcher@university.edu" required>
+                </div>
+                
+                <div class="form-group">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <label class="form-label" for="password" style="margin-bottom: 0;">Password</label>
+                        <a href="#" style="color: var(--text-muted); font-size: 0.75rem; text-decoration: none;">Forgot Password?</a>
+                    </div>
+                    <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block mb-3">Sign In</button>
+                <button type="button" class="btn btn-outline btn-block" onclick="document.getElementById('email').value='researcher@university.edu'; document.getElementById('password').value='password123';">Fill Demo Login</button>
+            </form>
+            
+            <script>
+                document.getElementById('loginForm').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+                    const errorBox = document.getElementById('loginError');
+                    
+                    try {
+                        const response = await fetch('http://localhost:5000/api/v1/auth/login', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email, password })
+                        });
+                        
+                        if (response.ok) {
+                            const data = await response.json();
+                            // Optional: store token in localStorage
+                            localStorage.setItem('token', data.token);
+                            localStorage.setItem('user_email', data.user.email);
+                            window.location.href = 'dashboard.html';
+                        } else {
+                            const error = await response.json();
+                            errorBox.textContent = error.detail || 'Login failed.';
+                            errorBox.style.display = 'block';
+                        }
+                    } catch (err) {
+                        errorBox.textContent = 'Server is unreachable. Please make sure the backend is running.';
+                        errorBox.style.display = 'block';
+                    }
+                });
+            </script>
+            
+            <div class="auth-footer">
+                Don't have an account? <a href="#">Request Access</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

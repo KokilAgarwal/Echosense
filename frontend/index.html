@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoSense | Listening to the Earth</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <h1 class="hero-title">Listening to the Earth<br>Before it Goes Silent.</h1>
+        <p class="hero-subtitle">An LSTM Autoencoder-based early detection system for ecosystem degradation using NDVI time-series data.</p>
+        <a href="#problem" class="btn btn-primary">Start the Journey</a>
+        
+        <div class="scroll-indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- Story Section 1: The Problem -->
+    <section class="story-section" id="problem">
+        <div class="story-container">
+            <div class="story-content">
+                <div class="glass-panel">
+                    <h2 class="text-emerald mb-3">The Problem</h2>
+                    <p class="mb-4">Ecosystems don't just collapse overnight. Long before desertification or deforestation becomes visible to the naked eye, the ecosystem begins to lose its resilience.</p>
+                    <p class="text-muted">Most monitoring systems wait until the damage is done. We need a way to detect the subtle, non-linear signals of stress hidden within the data.</p>
+                </div>
+            </div>
+            <div class="story-visual glass-panel" style="padding: 0; overflow: hidden; height: 300px; background: linear-gradient(to bottom, #10b981 0%, #0f1714 100%); display: flex; align-items: flex-end;">
+                <!-- Abstract Representation of fading forest -->
+                <svg viewBox="0 0 100 50" preserveAspectRatio="none" style="width: 100%; height: 100%;">
+                    <path d="M0,50 L0,30 L10,20 L20,40 L30,15 L40,35 L50,10 L60,40 L70,20 L80,45 L90,25 L100,50 Z" fill="#0f1714" opacity="0.8"/>
+                    <path d="M0,50 L0,40 L15,30 L25,45 L40,25 L55,48 L65,30 L85,45 L95,35 L100,50 Z" fill="#141E18" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section 2: The Data -->
+    <section class="story-section" id="data">
+        <div class="story-container">
+            <div class="story-visual glass-panel" style="padding: 2rem; display: flex; flex-direction: column; justify-content: center;">
+                <div style="display: flex; gap: 4px; align-items: flex-end; height: 150px; border-bottom: 2px solid var(--border-subtle);">
+                    <!-- Fake Bar Chart Array -->
+                    <div style="width: 10%; background: var(--primary-emerald); height: 80%;"></div>
+                    <div style="width: 10%; background: var(--primary-emerald); height: 90%;"></div>
+                    <div style="width: 10%; background: var(--primary-emerald); height: 85%;"></div>
+                    <div style="width: 10%; background: var(--accent-sage); height: 60%;"></div>
+                    <div style="width: 10%; background: var(--alert-yellow); height: 40%;"></div>
+                    <div style="width: 10%; background: var(--alert-red); height: 20%;"></div>
+                </div>
+                <p class="text-center mt-3 text-muted" style="margin-top: 1rem;">Normalized Difference Vegetation Index (NDVI)</p>
+            </div>
+            <div class="story-content">
+                <div class="glass-panel">
+                    <h2 class="text-sage mb-3">NDVI Time-Series</h2>
+                    <p class="mb-4">We use satellite imagery to monitor the Normalized Difference Vegetation Index (NDVI) over time. This gives us a quantitative measure of "greenness" and vegetation health.</p>
+                    <p class="text-muted">But simple thresholding isn't enough to capture complex seasonal dynamics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section 3: AI Solution -->
+    <section class="story-section" id="solution">
+        <div class="story-container">
+            <div class="story-content">
+                <div class="glass-panel">
+                    <h2 class="text-emerald mb-3">The LSTM Autoencoder</h2>
+                    <div class="concept-card">
+                        <h4>1. Encode</h4>
+                        <p class="text-muted text-sm">Compress historical NDVI sequences into a dense latent representation.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>2. Decode</h4>
+                        <p class="text-muted text-sm">Attempt to perfectly reconstruct the sequence based solely on healthy historical patterns.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>3. Detect</h4>
+                        <p class="text-muted text-sm">High reconstruction error means the ecosystem is behaving irregularly.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="story-visual glass-panel" style="display:flex; flex-direction: column; align-items: center;">
+                <h3 class="mb-4" style="color: white;">The "Silence Score"</h3>
+                <div style="width: 200px; height: 200px; border-radius: 50%; border: 10px solid #10b981; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);">
+                    <span style="font-size: 3rem; font-weight: bold; color: white;">8%</span>
+                </div>
+                <p class="text-muted mt-4 text-center">Quantifying the loss of ecological resilience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2 class="mb-4" style="font-size: 3rem;">Ready to Monitor?</h2>
+        <p class="text-muted mb-4 max-w-2xl">Access the full dashboard to upload geospatial datasets, view multi-regional analyses, and configure alerts.</p>
+        <div style="display: flex; gap: 1rem;">
+            <a href="login.html" class="btn btn-primary">Log In To Dashboard</a>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/scripts.js"></script>
+</body>
+</html>
