@@ -51,23 +51,23 @@
             </div>
 
             <div class="glass-panel validation-card" id="validationResult">
-                <h3 class="mb-3">Pipeline Validation Report: <span style="font-family: monospace; color: var(--text-muted);">dataset_2025_amazon.csv</span></h3>
+                <h3 class="mb-3">Pipeline Validation Report: <span style="font-family: monospace; color: var(--text-muted);">vellore_palar_ndvi_timeseries.csv</span></h3>
                 
                 <div style="display: flex; flex-direction: column; gap: 10px;">
                     <div style="display: flex; align-items: center;">
-                        <span class="success-tick">✔️</span> <span><strong>Structural Check:</strong> Passed (52 Data Points / Year Confirmed)</span>
+                        <span class="success-tick">✔️</span> <span><strong>Structural Check:</strong> Passed (Vellore District Sentinel-2 NDVI Observations Confirmed)</span>
                     </div>
                     <div style="display: flex; align-items: center;">
-                        <span class="warning-tick">⚠️</span> <span><strong>Missing Values:</strong> 3 NULLs detected. Auto-interpolating using cubic spline.</span>
+                        <span class="warning-tick">⚠️</span> <span><strong>Missing Values:</strong> 2 NULLs detected during summer heatwave. Auto-interpolated using cubic spline.</span>
                     </div>
                     <div style="display: flex; align-items: center;">
-                        <span class="success-tick">✔️</span> <span><strong>Min-Max Normalization:</strong> Applied scale [-1.0, 1.0]</span>
+                        <span class="success-tick">✔️</span> <span><strong>Min-Max Normalization:</strong> Applied scale [-1.0, 1.0] for PyTorch LSTM</span>
                     </div>
                 </div>
 
                 <div class="mt-4 pt-3" style="border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
-                    <span class="text-muted text-sm">Dataset is ready for model inference pipeline.</span>
-                    <button class="btn btn-primary" onclick="alert('Sent to Celery Worker Queue!')">Run LSTM Inference</button>
+                    <span class="text-muted text-sm">Dataset validated for Vellore District (12.9165° N, 79.1325° E). Ready for PyTorch LSTM inference.</span>
+                    <button class="btn btn-primary" onclick="alert('Inference dispatched to PyTorch LSTM Pipeline for Vellore!')">Run LSTM Inference</button>
                 </div>
             </div>
 

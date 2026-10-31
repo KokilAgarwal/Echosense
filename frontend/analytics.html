@@ -3,63 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytics | EchoSense</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Deep Analytics | EchoSense Vellore</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .sector-badge {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .stats-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        @media (max-width: 1024px) {
+            .stats-grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .stats-grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+        .chart-box {
+            height: 280px;
+            position: relative;
+        }
+    </style>
 </head>
 <body>
     <div class="dashboard-layout">
         
-        <!-- Sidebar Copy from Dashboard -->
+        <!-- Sidebar Navigation -->
         <aside class="sidebar">
-            <div class="sidebar-header"><a href="index.html" class="logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> EchoSense</a></div>
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                    EchoSense
+                </a>
+            </div>
+            
             <nav class="nav-links">
-                <a href="dashboard.html" class="nav-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Main Dashboard</a>
-                <a href="data-studio.html" class="nav-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg> Data Studio</a>
-                <a href="analytics.html" class="nav-item active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg> Analytics</a>
-                <a href="map.html" class="nav-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg> Map Visualization</a>
-                <a href="reports.html" class="nav-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg> Reports</a>
+                <a href="dashboard.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Main Dashboard
+                </a>
+
+                <a href="data-studio.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    Data Studio
+                </a>
+
+                <a href="analytics.html" class="nav-item active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                    Analytics
+                </a>
+
+                <a href="map.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+                        <line x1="9" y1="3" x2="9" y2="18"></line>
+                        <line x1="15" y1="6" x2="15" y2="21"></line>
+                    </svg>
+                    Map Visualization
+                </a>
+
+                <a href="alerts.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                    Alerts
+                </a>
+
+                <a href="reports.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                    </svg>
+                    Reports
+                </a>
             </nav>
-            <a href="profile.html" style="text-decoration: none;"><div class="user-profile"><div class="avatar">DA</div><div><h4 style="font-size: 14px; color: #fff;">Dr. Alice</h4><span style="font-size: 12px; color: var(--text-muted)">Settings</span></div></div></a>
+
+            <a href="profile.html" style="text-decoration: none;">
+                <div class="user-profile">
+                    <div class="avatar">VO</div>
+                    <div>
+                        <h4 style="font-size: 14px; color: #fff;">Vellore Observatory</h4>
+                        <span style="font-size: 11px; color: var(--text-muted)">Tamil Nadu, India</span>
+                    </div>
+                </div>
+            </a>
         </aside>
 
+        <!-- Main Content Area -->
         <main class="main-content">
+            
             <div class="topbar">
                 <div>
-                    <h2 class="mb-1">Deep Analytics & Trends</h2>
-                    <p class="text-muted">Historical degradation mapping across multi-variable epochs</p>
+                    <h2 class="mb-1">Vellore Deep Ecological Analytics</h2>
+                    <p class="text-muted">PyTorch LSTM temporal reconstruction & monsoon dynamics • Fixed Location: 12.9165° N, 79.1325° E (IST)</p>
                 </div>
                 <div>
-                    <select class="form-control" style="background: var(--bg-card); display: inline-block; width: 200px;">
-                        <option>Grid 42A (Amazon)</option>
-                        <option>Grid 105 (Congo)</option>
+                    <select id="analyticsSectorSelect" class="form-control" style="background: var(--bg-card); display: inline-block; width: 310px; color: #fff; padding: 0.6rem 0.85rem; border: 1px solid var(--primary-emerald); border-radius: 8px; font-weight: 500;">
+                        <option value="VEL-01">Sector VEL-01 (Palar River Basin)</option>
+                        <option value="VEL-02">Sector VEL-02 (Jawadhu Hills Foothills)</option>
+                        <option value="VEL-03">Sector VEL-03 (Otteri Lake Watershed)</option>
+                        <option value="VEL-04">Sector VEL-04 (Katpadi Agricultural Belt)</option>
                     </select>
                 </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
-                <div class="glass-panel">
-                    <h3 class="mb-3">Temporal Reconstruction Error ($E$) over 5 Years</h3>
-                    <div style="height: 300px;"><canvas id="errorChart"></canvas></div>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                    <div class="glass-panel">
-                        <h3 class="mb-3">Seasonal NDVI Patterns</h3>
-                        <div style="height: 250px;"><canvas id="seasonChart"></canvas></div>
+            <!-- Dynamic Vellore Sector Context Banner -->
+            <div class="glass-panel mb-3" style="border-left: 4px solid var(--primary-emerald); padding: 1rem 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+                            <h3 id="sectorTitle" style="color: #fff; margin: 0; font-size: 1.15rem;">Palar River Basin & Riparian Zone (Sector VEL-01)</h3>
+                            <span class="sector-badge" id="sectorLocationBadge">Central Vellore, Tamil Nadu</span>
+                        </div>
+                        <p id="sectorDesc" style="color: var(--text-muted); font-size: 0.85rem; margin: 0; line-height: 1.5;">
+                            Riparian alluvial scrub and subterranean sand aquifer. High susceptibility to pre-monsoon summer moisture deficit.
+                        </p>
                     </div>
-                    <div class="glass-panel">
-                        <h3 class="mb-3">Exogenous Variables Correlation</h3>
-                        <p class="text-muted text-sm mb-3">LST (Surface Temp) vs. NDVI Anomaly</p>
-                        <div style="height: 250px;"><canvas id="scatterChart"></canvas></div>
+                    <div>
+                        <span id="sectorStatusBadge" class="status-badge" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid #f59e0b; font-weight: 600; padding: 4px 10px; border-radius: 6px;">
+                            Moderate Stress
+                        </span>
                     </div>
                 </div>
             </div>
 
+            <!-- Vellore Sector KPI Cards -->
+            <div class="stats-grid-4">
+                <div class="glass-panel text-center" style="padding: 1.25rem;">
+                    <div class="text-muted text-sm mb-1">Sector Monitored Area</div>
+                    <div id="sectorAreaVal" style="font-size: 1.75rem; font-weight: bold; color: var(--primary-emerald);">42.5 km²</div>
+                    <div class="text-muted text-xs mt-1">Vellore Riverbed Zone</div>
+                </div>
+
+                <div class="glass-panel text-center" style="padding: 1.25rem;">
+                    <div class="text-muted text-sm mb-1">Silence Score (Resilience Loss)</div>
+                    <div id="sectorSilenceVal" style="font-size: 1.75rem; font-weight: bold; color: #f59e0b;">40.9%</div>
+                    <div class="text-muted text-xs mt-1">Critical Slowing Down</div>
+                </div>
+
+                <div class="glass-panel text-center" style="padding: 1.25rem;">
+                    <div class="text-muted text-sm mb-1">Reconstruction MSE ($E$)</div>
+                    <div id="sectorMseVal" style="font-size: 1.75rem; font-weight: bold; color: #fff;">0.0866</div>
+                    <div class="text-muted text-xs mt-1">PyTorch LSTM Autoencoder</div>
+                </div>
+
+                <div class="glass-panel text-center" style="padding: 1.25rem;">
+                    <div class="text-muted text-sm mb-1">Primary Rainfall Engine</div>
+                    <div style="font-size: 1.4rem; font-weight: bold; color: #3b82f6;">Northeast Monsoon</div>
+                    <div class="text-muted text-xs mt-1">Oct–Dec (Annual Peak)</div>
+                </div>
+            </div>
+
+            <!-- Charts Row 1: NDVI Comparison & Reconstruction Error -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                
+                <div class="glass-panel">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.05rem; color: #fff;">NDVI Trajectory vs. Expected Climatology</h3>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">Sentinel-2 (48 Epochs)</span>
+                    </div>
+                    <div class="chart-box">
+                        <canvas id="analyticsNdviChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="glass-panel">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.05rem; color: #fff;">Silence Score & Anomaly Progression</h3>
+                        <span style="font-size: 0.75rem; color: #f59e0b;">Threshold: &mu; + 1.5&sigma;</span>
+                    </div>
+                    <div class="chart-box">
+                        <canvas id="errorChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Charts Row 2: Tamil Nadu Monsoon Seasons & Exogenous Climate Correlation -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                
+                <div class="glass-panel">
+                    <div style="margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.05rem; color: #fff;">Tamil Nadu Monsoon Vegetative Health</h3>
+                        <p class="text-muted text-sm">Empirical health index across Vellore's 4 distinct climatological phases</p>
+                    </div>
+                    <div class="chart-box">
+                        <canvas id="seasonChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="glass-panel">
+                    <div style="margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.05rem; color: #fff;">Vellore Land Surface Temp (°C) vs. NDVI Anomaly</h3>
+                        <p class="text-muted text-sm">Exogenous thermal correlation: high summer heat (36-40°C) drives canopy stress</p>
+                    </div>
+                    <div class="chart-box">
+                        <canvas id="scatterChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Diagnostic Insight Note -->
+            <div class="glass-panel" style="padding: 1.25rem 1.5rem;">
+                <h4 style="color: var(--primary-emerald); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    Vellore Ecological Diagnostic Commentary
+                </h4>
+                <p id="sectorCommentary" style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin: 0;">
+                    Vellore's ecosystem is heavily governed by the Northeast Monsoon (October to December), which contributes over 50% of the district's annual precipitation. During the pre-monsoon dry season (March to May), daytime temperatures frequently surpass 40°C, and the sandy riverbed of the Palar loses surface moisture. The PyTorch LSTM Autoencoder isolates early warning signals of critical slowing down by analyzing the recovery rate after these high-temperature summer stress cycles.
+                </p>
+            </div>
+
         </main>
     </div>
+    
     <script src="js/scripts.js"></script>
 </body>
 </html>

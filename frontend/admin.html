@@ -69,14 +69,15 @@
                 </div>
             </div>
 
-            <!-- Monitored Regions Table -->
+            <!-- Monitored Vellore Sectors Table -->
             <div class="glass-panel">
-                <h3 class="mb-3">Global Region Alerts</h3>
+                <h3 class="mb-3">Vellore District Sector Telemetry & Resilience Status</h3>
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th>Region ID</th>
-                            <th>Location</th>
+                            <th>Sector ID</th>
+                            <th>Geographic Sector</th>
+                            <th>Ecosystem Type</th>
                             <th>Status</th>
                             <th>Silence Score</th>
                             <th>Action</th>
@@ -84,25 +85,36 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>R-842</td>
-                            <td>Brazilian Amazon (Mato Grosso)</td>
-                            <td><span class="status-badge status-critical">Critical</span></td>
-                            <td class="text-center"><span style="color: var(--alert-red); font-weight: bold;">88%</span></td>
-                            <td><button class="btn btn-outline" style="padding: 4px 8px; font-size: 12px;">View Data</button></td>
+                            <td>VEL-01</td>
+                            <td>Palar River Basin (Central Vellore)</td>
+                            <td>Riparian Alluvial Scrub</td>
+                            <td><span class="status-badge status-stress">Moderate Stress</span></td>
+                            <td class="text-center"><span style="color: var(--alert-yellow); font-weight: bold;">28.4%</span></td>
+                            <td><button class="btn btn-outline" style="padding: 4px 8px; font-size: 12px;" onclick="window.location.href='analytics.html'">View Data</button></td>
                         </tr>
                         <tr>
-                            <td>R-105</td>
-                            <td>Congo Basin Sector 4</td>
-                            <td><span class="status-badge status-stress">Stress</span></td>
-                            <td class="text-center"><span style="color: var(--alert-yellow); font-weight: bold;">54%</span></td>
-                            <td><button class="btn btn-outline" style="padding: 4px 8px; font-size: 12px;">View Data</button></td>
-                        </tr>
-                        <tr>
-                            <td>R-901</td>
-                            <td>Boreal Forest (Canada)</td>
+                            <td>VEL-02</td>
+                            <td>Jawadhu Foothills Forest Reserve</td>
+                            <td>Tropical Dry Deciduous</td>
                             <td><span class="status-badge status-normal">Healthy</span></td>
-                            <td class="text-center"><span style="color: var(--primary-emerald); font-weight: bold;">12%</span></td>
-                            <td><button class="btn btn-outline" style="padding: 4px 8px; font-size: 12px;">View Data</button></td>
+                            <td class="text-center"><span style="color: var(--primary-emerald); font-weight: bold;">10.2%</span></td>
+                            <td><button class="btn btn-outline" style="padding: 4px 8px; font-size: 12px;" onclick="window.location.href='analytics.html'">View Data</button></td>
+                        </tr>
+                        <tr>
+                            <td>VEL-03</td>
+                            <td>Otteri Lake Catchment & Watershed</td>
+                            <td>Wetland Catchment Scrub</td>
+                            <td><span class="status-badge status-normal">Healthy</span></td>
+                            <td class="text-center"><span style="color: var(--primary-emerald); font-weight: bold;">16.5%</span></td>
+                            <td><button class="btn btn-outline" style="padding: 4px 8px; font-size: 12px;" onclick="window.location.href='analytics.html'">View Data</button></td>
+                        </tr>
+                        <tr>
+                            <td>VEL-04</td>
+                            <td>Katpadi Agro-Ecological Corridor</td>
+                            <td>Irrigated Agro-Ecosystem</td>
+                            <td><span class="status-badge status-normal">Healthy</span></td>
+                            <td class="text-center"><span style="color: var(--primary-emerald); font-weight: bold;">14.8%</span></td>
+                            <td><button class="btn btn-outline" style="padding: 4px 8px; font-size: 12px;" onclick="window.location.href='analytics.html'">View Data</button></td>
                         </tr>
                     </tbody>
                 </table>
